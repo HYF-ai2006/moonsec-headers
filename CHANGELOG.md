@@ -9,3 +9,4 @@
 - Added deterministic CLI smoke example at `cmd/main`.
 - Added tests covering normal input, malformed input, boundary input, CSP conversion, core audit logic, and report export.
 - Added README, submission document, design notes, research notes, test record, MIT license, and GitHub Actions CI.
+- Filled participant submission information and updated package metadata for `HYF-ai2006/moonsec-headers`.

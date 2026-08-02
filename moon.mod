@@ -9,13 +9,13 @@
 //   "moonbitlang/x@0.4.6",
 // }
 
-name = "username/moonsec-headers"
+name = "HYF-ai2006/moonsec-headers"
 
 version = "0.1.0"
 
 readme = "README.md"
 
-repository = "https://github.com/username/moonsec-headers.git"
+repository = "https://github.com/HYF-ai2006/moonsec-headers.git"
 
 license = "MIT"
 

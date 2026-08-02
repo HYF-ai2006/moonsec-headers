@@ -1,5 +1,5 @@
 import {
-  "username/moonsec-headers" @headers,
+  "HYF-ai2006/moonsec-headers" @headers,
 }
 
 pkgtype(kind: "executable")

@@ -53,6 +53,8 @@ failed to open credentials file: C:\Users\11619\.moon\credentials.json, please l
 
 参赛者执行 `moon login` 后可再次运行 `moon publish --dry-run` 与 `moon publish`。
 
+2026-08-02 复查时根据当前计划暂不执行 Mooncakes 发布命令；已重新通过 `moon check`、`moon build`、`moon test` 和 `moon run cmd/main`。
+
 ## 测试数据说明
 
 测试使用自制字符串 fixture：

@@ -19,20 +19,20 @@ Web 服务、Wasm 边缘函数、静态站点发布脚本和内部安全工具�
 Mooncakes 包名：
 
 ```text
-username/moonsec-headers
+HYF-ai2006/moonsec-headers
 ```
 
 发布到个人 Mooncakes owner 后，可在项目中添加：
 
 ```bash
-moon add username/moonsec-headers
+moon add HYF-ai2006/moonsec-headers
 ```
 
 然后在 `moon.pkg` 中导入：
 
 ```text
 import {
-  "username/moonsec-headers" @headers
+  "HYF-ai2006/moonsec-headers" @headers
 }
 ```
 
