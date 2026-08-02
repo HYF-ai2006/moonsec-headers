@@ -1,0 +1,116 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "username/moonsec-headers"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn audit_header_set(HeaderSet) -> AuditReport
+
+pub fn audit_headers(StringView) -> AuditReport
+
+pub fn grade_score(Int) -> String
+
+pub fn is_known_security_header(StringView) -> Bool
+
+pub fn normalize_header_name(StringView) -> String
+
+pub fn parse_csp(StringView) -> CspPolicy
+
+pub fn parse_header_line(StringView, Int) -> Result[Header, ParseIssue]
+
+pub fn parse_headers(StringView) -> HeaderSet
+
+pub fn recommended_baseline() -> String
+
+pub fn sample_insecure_headers() -> String
+
+pub fn score_findings(Array[Finding]) -> Int
+
+// Errors
+
+// Types and methods
+pub(all) struct AuditReport {
+  score : Int
+  grade : String
+  findings : Array[Finding]
+  headers : HeaderSet
+} derive(Eq, @debug.Debug)
+pub fn AuditReport::count_by_severity(Self, Severity) -> Int
+pub fn AuditReport::has_finding(Self, StringView) -> Bool
+pub fn AuditReport::to_json_string(Self) -> String
+pub fn AuditReport::to_markdown(Self) -> String
+
+pub(all) struct CspPolicy {
+  raw : String
+  directives : Array[Directive]
+  duplicates : Array[String]
+  issues : Array[ParseIssue]
+} derive(Eq, @debug.Debug)
+pub fn CspPolicy::directive(Self, StringView) -> Directive?
+pub fn CspPolicy::effective_values(Self, StringView) -> Array[String]
+pub fn CspPolicy::has_directive(Self, StringView) -> Bool
+pub fn CspPolicy::values_for(Self, StringView) -> Array[String]
+
+pub(all) struct Directive {
+  name : String
+  values : Array[String]
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Finding {
+  id : String
+  severity : Severity
+  header : String
+  message : String
+  evidence : String
+  remediation : String
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Header {
+  name : String
+  value : String
+  line : Int
+} derive(Eq, @debug.Debug)
+
+pub(all) struct HeaderSet {
+  headers : Array[Header]
+  index : Map[String, Array[String]]
+  issues : Array[ParseIssue]
+} derive(Eq, @debug.Debug)
+pub fn HeaderSet::get(Self, StringView) -> String?
+pub fn HeaderSet::get_all(Self, StringView) -> Array[String]
+pub fn HeaderSet::has(Self, StringView) -> Bool
+pub fn HeaderSet::security_headers(Self) -> Array[Header]
+
+pub(all) struct ParseIssue {
+  kind : ParseIssueKind
+  line : Int
+  name : String
+  message : String
+} derive(Eq, @debug.Debug)
+
+pub(all) enum ParseIssueKind {
+  EmptyName
+  MissingColon
+  ControlCharacter
+  EmptyDirective
+  DuplicateDirective
+  InvalidToken
+} derive(Eq, @debug.Debug)
+pub fn ParseIssueKind::label(Self) -> String
+
+pub(all) enum Severity {
+  Critical
+  High
+  Medium
+  Low
+  Info
+} derive(Eq, @debug.Debug)
+pub fn Severity::label(Self) -> String
+pub fn Severity::weight(Self) -> Int
+
+// Type aliases
+
+// Traits
+
