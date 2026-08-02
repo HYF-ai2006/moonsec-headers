@@ -1,0 +1,5 @@
+import {
+  "username/moonsec-headers" @headers,
+}
+
+pkgtype(kind: "executable")
