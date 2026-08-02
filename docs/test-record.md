@@ -32,11 +32,26 @@ moon publish --dry-run
 已执行：
 
 ```text
+moon check
+passed
+
+moon build
+passed
+
 moon test
 Total tests: 10, passed: 10, failed: 0.
+
+moon run cmd/main
+passed, emitted a Markdown report for the insecure fixture.
 ```
 
-`moon check` 已通过。`moon build`、`moon run cmd/main` 与 `moon publish --dry-run` 在最终自检阶段统一记录。
+`moon publish --dry-run` 已尝试执行，当前环境缺少 Mooncakes 登录凭据，返回：
+
+```text
+failed to open credentials file: C:\Users\11619\.moon\credentials.json, please login first
+```
+
+参赛者执行 `moon login` 后可再次运行 `moon publish --dry-run` 与 `moon publish`。
 
 ## 测试数据说明
 
