@@ -8,13 +8,16 @@ moonsec-headers 只处理调用者提供的 HTTP 响应头文本。项目不内�
 
 - Issue 1：为 Content-Security-Policy-Report-Only 增加独立审计模式。
 - Issue 2：增加 Trusted Types 相关 CSP 规则。
-- Issue 3：为不同应用类型提供配置 profile，例如 static-site、api-only、admin-console。
-- Issue 4：增加 SARIF 导出，方便 GitHub code scanning 消费。
+- Issue 3：允许调用方自定义 SecurityProfile，并提供 profile diff 工具。
+- Issue 4：将 SARIF-like 输出升级为更完整的 SARIF rule metadata。
 - Issue 5：增加更多自制 fixture，覆盖重复 header、大小写混合、空 directive 和边界 max-age。
+- Issue 6：为 HeaderPlan 增加更多部署模板，例如 OAuth callback、public API、download endpoint。
+- Issue 7：为 CspBuilder 增加 directive 排序策略和 report-only/enforcing 成对输出。
 
 ## 版本发布记录
 
 - 0.1.0：首个可发布版本，包含解析、审计、报告导出、CLI 示例、测试和 CI。
+- Unreleased：增加 profile、深度 CSP 分析、策略生成器、SARIF-like/Checklist/PlainText 报告、CI gate helpers，测试扩展到 23 个。
 
 ## 贡献约定
 

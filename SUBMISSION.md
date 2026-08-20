@@ -12,7 +12,7 @@
 
 ## 项目简介
 
-moonsec-headers 是一个用 MoonBit 实现的 HTTP 安全响应头审计库。项目接收原始响应头文本，解析 Content-Security-Policy、HSTS、X-Content-Type-Options、X-Frame-Options、Referrer-Policy、Permissions-Policy、COOP/CORP 和 CORS 相关头，输出带评分、风险等级、证据和修复建议的 Markdown 或 JSON 报告。它解决 Web/Wasm 项目、静态站点发布脚本和内部安全工具在发布前缺少可复用响应头检查能力的问题。
+moonsec-headers 是一个用 MoonBit 实现的 HTTP 安全响应头审计库。项目接收原始响应头文本，解析 Content-Security-Policy、HSTS、X-Content-Type-Options、X-Frame-Options、Referrer-Policy、Permissions-Policy、COOP/CORP 和 CORS 相关头，输出带评分、风险等级、证据和修复建议的 Markdown、JSON、Checklist、PlainText 与 SARIF-like 报告。项目还提供深度 CSP source expression 分析、场景化安全 profile 和响应头策略生成器，解决 Web/Wasm 项目、静态站点发布脚本和内部安全工具在发布前缺少可复用响应头检查能力的问题。
 
 ## 项目方向与适用场景
 
@@ -23,12 +23,15 @@ moonsec-headers 是一个用 MoonBit 实现的 HTTP 安全响应头审计库。�
 - HTTP header 行解析、名称归一化、重复 header 聚合与格式错误记录；
 - CSP directive 解析、重复 directive 识别、default-src fallback 与高风险 source 检测；
 - HSTS、X-Content-Type-Options、X-Frame-Options、Referrer-Policy、Permissions-Policy、COOP/CORP、CORS 组合审计；
-- 稳定规则 ID、评分等级、Markdown 报告和 JSON 报告导出；
+- 深度 CSP source 分类、fallback 分析、风险观察与结构化输出；
+- static-site、spa-app、api-service、admin-console、login-flow、media-cdn 等安全 profile；
+- CSP builder、HSTS builder、Permissions-Policy helper 和完整 header plan 生成；
+- 稳定规则 ID、评分等级、Markdown、PlainText、Checklist、JSON、SARIF-like 报告导出；
 - 提供可运行 CLI 示例、单元测试、README、CI、设计说明、测试记录和维护计划。
 
 ## 项目现有基础与本次计划
 
-当前已完成 MoonBit 工程、核心库、10 个核心测试、`cmd/main` CLI smoke 示例、README、GitHub Actions CI、MIT 许可证、调研记录、设计说明、测试记录、更新日志和维护计划。本轮先完成源码、文档、测试、构建和公开仓库准备；Mooncakes 发布环节后续在登录后执行 `moon publish --dry-run` 与正式发布。
+当前已完成 MoonBit 工程、核心库、23 个本地测试、`cmd/main` CLI smoke 示例、README、GitHub Actions CI、MIT 许可证、调研记录、设计说明、测试记录、更新日志、维护计划和贡献/安全报告入口。当前有效 MoonBit 源码为 4649 行，已超过 4k 行。本轮先完成源码、文档、测试、构建和公开仓库准备；Mooncakes 发布环节后续在登录后执行 `moon publish --dry-run` 与正式发布。
 
 ## 原创或参考说明
 

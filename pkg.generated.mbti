@@ -6,13 +6,115 @@ import {
 }
 
 // Values
+pub fn admin_console_csp(StringView) -> CspBuilder
+
+pub fn admin_console_header_plan(StringView) -> HeaderPlan
+
+pub fn admin_console_profile() -> SecurityProfile
+
+pub fn analyze_csp_header(StringView) -> CspAnalysis
+
+pub fn analyze_csp_policy(CspPolicy) -> CspAnalysis
+
+pub fn api_service_csp() -> CspBuilder
+
+pub fn api_service_header_plan() -> HeaderPlan
+
+pub fn api_service_profile() -> SecurityProfile
+
 pub fn audit_header_set(HeaderSet) -> AuditReport
 
 pub fn audit_headers(StringView) -> AuditReport
 
+pub fn audit_headers_with_csp_analysis(StringView) -> AuditReport
+
+pub fn cache_control_header(StringView) -> HeaderPair
+
+pub fn classify_csp_source(StringView) -> CspSourceKind
+
+pub fn content_disposition_header(StringView) -> HeaderPair
+
+pub fn cross_origin_embedder_policy_header(StringView) -> HeaderPair
+
+pub fn cross_origin_opener_policy_header(StringView) -> HeaderPair
+
+pub fn cross_origin_resource_policy_header(StringView) -> HeaderPair
+
+pub fn csp_all_interesting_directives() -> Array[String]
+
+pub fn csp_directive_family(StringView) -> CspDirectiveFamily
+
+pub fn csp_document_directive(StringView) -> Bool
+
+pub fn csp_document_directives() -> Array[String]
+
+pub fn csp_fallback_directive(StringView) -> String?
+
+pub fn csp_mixed_content_directive(StringView) -> Bool
+
+pub fn csp_mixed_content_directives() -> Array[String]
+
+pub fn csp_navigation_directive(StringView) -> Bool
+
+pub fn csp_navigation_directives() -> Array[String]
+
+pub fn csp_report_only_builder() -> CspBuilder
+
+pub fn csp_reporting_directive(StringView) -> Bool
+
+pub fn csp_reporting_directives() -> Array[String]
+
+pub fn csp_source_directive(StringView) -> Bool
+
+pub fn csp_source_directives() -> Array[String]
+
+pub fn csp_source_expression(StringView, StringView) -> CspSourceExpression
+
+pub fn default_render_options() -> RenderOptions
+
+pub fn docs_site_profile() -> SecurityProfile
+
+pub fn embedded_widget_profile() -> SecurityProfile
+
+pub fn file_download_profile() -> SecurityProfile
+
 pub fn grade_score(Int) -> String
 
+pub fn header_pair(StringView, StringView) -> HeaderPair
+
+pub fn header_plan(HeaderPlanKind, StringView, StringView, Array[HeaderPair], Array[String]) -> HeaderPlan
+
+pub fn header_plan_by_key(StringView) -> HeaderPlan?
+
+pub fn header_plan_catalog() -> Array[HeaderPlan]
+
+pub fn header_plan_catalog_markdown() -> String
+
+pub fn header_plan_keys() -> Array[String]
+
+pub fn hsts_config(Int, Bool, Bool) -> HstsConfig
+
+pub fn hsts_header(Int, Bool, Bool) -> HeaderPair
+
+pub fn internal_dashboard_profile() -> SecurityProfile
+
 pub fn is_known_security_header(StringView) -> Bool
+
+pub fn login_flow_csp(StringView) -> CspBuilder
+
+pub fn login_flow_header_plan(StringView) -> HeaderPlan
+
+pub fn login_flow_profile() -> SecurityProfile
+
+pub fn media_cdn_csp() -> CspBuilder
+
+pub fn media_cdn_header_plan() -> HeaderPlan
+
+pub fn media_cdn_profile() -> SecurityProfile
+
+pub fn new_csp_builder() -> CspBuilder
+
+pub fn no_detail_render_options() -> RenderOptions
 
 pub fn normalize_header_name(StringView) -> String
 
@@ -22,11 +124,69 @@ pub fn parse_header_line(StringView, Int) -> Result[Header, ParseIssue]
 
 pub fn parse_headers(StringView) -> HeaderSet
 
+pub fn permissions_policy_header(Array[String]) -> HeaderPair
+
+pub fn profile(ProfileKind, StringView, StringView, StringView, StringView, Array[HeaderRequirement]) -> SecurityProfile
+
+pub fn profile_assessment_catalog(SecurityProfile) -> Array[String]
+
+pub fn profile_audiences_markdown() -> String
+
+pub fn profile_catalog() -> Array[SecurityProfile]
+
+pub fn profile_catalog_markdown() -> String
+
+pub fn profile_count() -> Int
+
+pub fn profile_gap_headers(SecurityProfile, HeaderSet) -> Array[String]
+
+pub fn profile_is_strict(SecurityProfile) -> Bool
+
+pub fn profile_keys() -> Array[String]
+
+pub fn profile_lookup(StringView) -> SecurityProfile?
+
+pub fn profile_names_markdown() -> String
+
+pub fn profile_summaries_markdown() -> String
+
+pub fn profile_titles() -> Array[String]
+
+pub fn public_portal_profile() -> SecurityProfile
+
 pub fn recommended_baseline() -> String
+
+pub fn recommended_hsts_config() -> HstsConfig
+
+pub fn referrer_policy_header(StringView) -> HeaderPair
+
+pub fn requirement(StringView, StringView, mode? : RequirementMode, required? : Bool, severity? : Severity, rationale? : StringView) -> HeaderRequirement
+
+pub fn requirement_matches(HeaderRequirement, StringView) -> Bool
 
 pub fn sample_insecure_headers() -> String
 
 pub fn score_findings(Array[Finding]) -> Int
+
+pub fn spa_app_profile() -> SecurityProfile
+
+pub fn spa_csp(StringView, StringView) -> CspBuilder
+
+pub fn spa_header_plan(StringView, StringView) -> HeaderPlan
+
+pub fn static_site_csp() -> CspBuilder
+
+pub fn static_site_header_plan() -> HeaderPlan
+
+pub fn static_site_profile() -> SecurityProfile
+
+pub fn strict_profiles() -> Array[SecurityProfile]
+
+pub fn wasm_edge_profile() -> SecurityProfile
+
+pub fn x_content_type_options_header() -> HeaderPair
+
+pub fn x_frame_options_header(StringView) -> HeaderPair
 
 // Errors
 
@@ -38,9 +198,104 @@ pub(all) struct AuditReport {
   headers : HeaderSet
 } derive(Eq, @debug.Debug)
 pub fn AuditReport::count_by_severity(Self, Severity) -> Int
+pub fn AuditReport::findings_by_header(Self, StringView) -> Array[Finding]
+pub fn AuditReport::findings_by_severity(Self, Severity) -> Array[Finding]
+pub fn AuditReport::has_blocking_findings(Self) -> Bool
 pub fn AuditReport::has_finding(Self, StringView) -> Bool
+pub fn AuditReport::is_clean(Self) -> Bool
+pub fn AuditReport::passes(Self, Int) -> Bool
+pub fn AuditReport::render(Self, ReportFormat, options? : RenderOptions) -> String
+pub fn AuditReport::rendered_findings(Self, RenderOptions) -> Array[Finding]
+pub fn AuditReport::severity_breakdown(Self) -> String
+pub fn AuditReport::to_checklist_markdown(Self, RenderOptions) -> String
+pub fn AuditReport::to_detailed_markdown(Self, RenderOptions) -> String
+pub fn AuditReport::to_issue_summary(Self) -> String
 pub fn AuditReport::to_json_string(Self) -> String
 pub fn AuditReport::to_markdown(Self) -> String
+pub fn AuditReport::to_plain_text(Self, RenderOptions) -> String
+pub fn AuditReport::to_sarif_string(Self, RenderOptions) -> String
+pub fn AuditReport::top_findings(Self, Int) -> Array[Finding]
+
+pub(all) struct CspAnalysis {
+  score : Int
+  policy : CspPolicy
+  observations : Array[CspObservation]
+  directives : Array[CspDirectiveSummary]
+  sources : Array[CspSourceExpression]
+} derive(Eq, @debug.Debug)
+pub fn CspAnalysis::count_by_severity(Self, Severity) -> Int
+pub fn CspAnalysis::has_observation(Self, StringView) -> Bool
+pub fn CspAnalysis::summary(Self) -> String
+pub fn CspAnalysis::to_findings(Self) -> Array[Finding]
+pub fn CspAnalysis::to_json_string(Self) -> String
+pub fn CspAnalysis::to_markdown(Self) -> String
+
+pub(all) struct CspBuilder {
+  report_only : Bool
+  directives : Array[CspDirectiveSpec]
+} derive(Eq, @debug.Debug)
+pub fn CspBuilder::analyze(Self) -> CspAnalysis
+pub fn CspBuilder::append_value(Self, StringView, StringView) -> Self
+pub fn CspBuilder::as_enforcing(Self) -> Self
+pub fn CspBuilder::as_report_only(Self) -> Self
+pub fn CspBuilder::copy_directives(Self) -> Array[CspDirectiveSpec]
+pub fn CspBuilder::has_directive(Self, StringView) -> Bool
+pub fn CspBuilder::header_name(Self) -> String
+pub fn CspBuilder::parse_policy(Self) -> CspPolicy
+pub fn CspBuilder::render(Self) -> String
+pub fn CspBuilder::to_header_line(Self) -> String
+pub fn CspBuilder::to_header_pair(Self) -> HeaderPair
+pub fn CspBuilder::validate(Self) -> PolicyValidation
+pub fn CspBuilder::values_for(Self, StringView) -> Array[String]
+pub fn CspBuilder::with_directive(Self, StringView, Array[String]) -> Self
+pub fn CspBuilder::without_directive(Self, StringView) -> Self
+
+pub(all) enum CspDirectiveFamily {
+  CspFamilyFetch
+  CspFamilyDocument
+  CspFamilyNavigation
+  CspFamilyReporting
+  CspFamilySandbox
+  CspFamilyMixedContent
+  CspFamilyOther
+} derive(Eq, @debug.Debug)
+pub fn CspDirectiveFamily::label(Self) -> String
+
+pub(all) struct CspDirectiveSpec {
+  name : String
+  values : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn CspDirectiveSpec::render(Self) -> String
+
+pub(all) struct CspDirectiveSummary {
+  name : String
+  family : CspDirectiveFamily
+  explicit : Bool
+  value_count : Int
+  source_count : Int
+  has_none : Bool
+  has_self : Bool
+  has_wildcard : Bool
+  has_http : Bool
+  has_inline : Bool
+  has_eval : Bool
+  has_nonce : Bool
+  has_hash : Bool
+  notes : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn CspDirectiveSummary::stance(Self) -> String
+pub fn CspDirectiveSummary::to_json_string(Self) -> String
+pub fn CspDirectiveSummary::to_markdown_row(Self) -> String
+
+pub(all) struct CspObservation {
+  id : String
+  severity : Severity
+  directive : String
+  source : String
+  message : String
+  recommendation : String
+} derive(Eq, @debug.Debug)
+pub fn CspObservation::to_finding(Self) -> Finding
 
 pub(all) struct CspPolicy {
   raw : String
@@ -48,10 +303,52 @@ pub(all) struct CspPolicy {
   duplicates : Array[String]
   issues : Array[ParseIssue]
 } derive(Eq, @debug.Debug)
+pub fn CspPolicy::all_sources(Self) -> Array[CspSourceExpression]
 pub fn CspPolicy::directive(Self, StringView) -> Directive?
+pub fn CspPolicy::directive_names(Self) -> Array[String]
+pub fn CspPolicy::directive_summary(Self, StringView) -> CspDirectiveSummary
+pub fn CspPolicy::effective_source_values(Self, StringView) -> Array[String]
 pub fn CspPolicy::effective_values(Self, StringView) -> Array[String]
+pub fn CspPolicy::explicit_sources_for(Self, StringView) -> Array[CspSourceExpression]
 pub fn CspPolicy::has_directive(Self, StringView) -> Bool
+pub fn CspPolicy::has_hash(Self) -> Bool
+pub fn CspPolicy::has_nonce(Self) -> Bool
+pub fn CspPolicy::has_strict_dynamic(Self) -> Bool
+pub fn CspPolicy::sources_for(Self, StringView) -> Array[CspSourceExpression]
 pub fn CspPolicy::values_for(Self, StringView) -> Array[String]
+
+pub(all) struct CspSourceExpression {
+  directive : String
+  raw : String
+  normalized : String
+  kind : CspSourceKind
+  secure_transport : Bool
+  broad : Bool
+  note : String
+} derive(Eq, @debug.Debug)
+pub fn CspSourceExpression::risk_label(Self) -> String
+pub fn CspSourceExpression::to_json_string(Self) -> String
+pub fn CspSourceExpression::to_markdown_row(Self) -> String
+
+pub(all) enum CspSourceKind {
+  CspSourceNone
+  CspSourceSelf
+  CspSourceUnsafeInline
+  CspSourceUnsafeEval
+  CspSourceStrictDynamic
+  CspSourceNonce
+  CspSourceHash
+  CspSourceHttpsScheme
+  CspSourceHttpScheme
+  CspSourceDataScheme
+  CspSourceBlobScheme
+  CspSourceFilesystemScheme
+  CspSourceWildcard
+  CspSourceHost
+  CspSourceKeyword
+  CspSourceUnknown
+} derive(Eq, @debug.Debug)
+pub fn CspSourceKind::label(Self) -> String
 
 pub(all) struct Directive {
   name : String
@@ -66,11 +363,56 @@ pub(all) struct Finding {
   evidence : String
   remediation : String
 } derive(Eq, @debug.Debug)
+pub fn Finding::to_markdown_row(Self) -> String
+pub fn Finding::to_plain_text_line(Self) -> String
 
 pub(all) struct Header {
   name : String
   value : String
   line : Int
+} derive(Eq, @debug.Debug)
+
+pub(all) struct HeaderPair {
+  name : String
+  value : String
+} derive(Eq, @debug.Debug)
+pub fn HeaderPair::line(Self) -> String
+pub fn HeaderPair::normalized_name(Self) -> String
+pub fn HeaderPair::to_markdown_row(Self) -> String
+
+pub(all) struct HeaderPlan {
+  kind : HeaderPlanKind
+  title : String
+  scenario : String
+  headers : Array[HeaderPair]
+  notes : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn HeaderPlan::assess_with_profile(Self, StringView) -> ProfileAssessment?
+pub fn HeaderPlan::audit(Self) -> AuditReport
+pub fn HeaderPlan::audit_deep(Self) -> AuditReport
+pub fn HeaderPlan::to_header_block(Self) -> String
+pub fn HeaderPlan::to_json_string(Self) -> String
+pub fn HeaderPlan::to_markdown(Self) -> String
+pub fn HeaderPlan::validate(Self) -> PolicyValidation
+
+pub(all) enum HeaderPlanKind {
+  HeaderPlanStaticSite
+  HeaderPlanSpaApp
+  HeaderPlanApiService
+  HeaderPlanAdminConsole
+  HeaderPlanLoginFlow
+  HeaderPlanMediaCdn
+  HeaderPlanCustom
+} derive(Eq, @debug.Debug)
+pub fn HeaderPlanKind::label(Self) -> String
+
+pub(all) struct HeaderRequirement {
+  name : String
+  expected : String
+  mode : RequirementMode
+  required : Bool
+  severity : Severity
+  rationale : String
 } derive(Eq, @debug.Debug)
 
 pub(all) struct HeaderSet {
@@ -82,6 +424,14 @@ pub fn HeaderSet::get(Self, StringView) -> String?
 pub fn HeaderSet::get_all(Self, StringView) -> Array[String]
 pub fn HeaderSet::has(Self, StringView) -> Bool
 pub fn HeaderSet::security_headers(Self) -> Array[Header]
+
+pub(all) struct HstsConfig {
+  max_age : Int
+  include_subdomains : Bool
+  preload : Bool
+} derive(Eq, @debug.Debug)
+pub fn HstsConfig::render(Self) -> String
+pub fn HstsConfig::to_header_pair(Self) -> HeaderPair
 
 pub(all) struct ParseIssue {
   kind : ParseIssueKind
@@ -100,6 +450,110 @@ pub(all) enum ParseIssueKind {
 } derive(Eq, @debug.Debug)
 pub fn ParseIssueKind::label(Self) -> String
 
+pub(all) struct PolicyValidation {
+  ok : Bool
+  messages : Array[ValidationMessage]
+} derive(Eq, @debug.Debug)
+pub fn PolicyValidation::error_count(Self) -> Int
+pub fn PolicyValidation::note_count(Self) -> Int
+pub fn PolicyValidation::to_markdown(Self) -> String
+pub fn PolicyValidation::warning_count(Self) -> Int
+
+pub(all) struct ProfileAssessment {
+  profile_key : String
+  score : Int
+  matched : Int
+  missing : Int
+  weak : Int
+  conflict : Int
+  optional : Int
+  findings : Array[ProfileFinding]
+} derive(Eq, @debug.Debug)
+pub fn ProfileAssessment::meets_required(Self) -> Bool
+pub fn ProfileAssessment::recommendations(Self) -> Array[String]
+pub fn ProfileAssessment::summary(Self) -> String
+pub fn ProfileAssessment::to_checklist(Self) -> String
+pub fn ProfileAssessment::to_json_string(Self) -> String
+pub fn ProfileAssessment::to_markdown(Self) -> String
+pub fn ProfileAssessment::to_plain_text(Self) -> String
+pub fn ProfileAssessment::to_recommendations_markdown(Self) -> String
+
+pub(all) struct ProfileFinding {
+  name : String
+  status : ProfileStatus
+  actual : String?
+  expected : String
+  severity : Severity
+  rationale : String
+} derive(Eq, @debug.Debug)
+
+pub(all) enum ProfileKind {
+  StaticSite
+  SpaApp
+  ApiService
+  AdminConsole
+  DocsSite
+  EmbeddedWidget
+  InternalDashboard
+  FileDownload
+  WasmEdge
+  PublicPortal
+  LoginFlow
+  MediaCdn
+} derive(Eq, @debug.Debug)
+pub fn ProfileKind::label(Self) -> String
+
+pub(all) enum ProfileStatus {
+  Satisfied
+  Missing
+  Weak
+  Conflict
+  Optional
+} derive(Eq, @debug.Debug)
+pub fn ProfileStatus::label(Self) -> String
+
+pub(all) struct RenderOptions {
+  title : String
+  limit : Int
+  include_evidence : Bool
+  include_remediation : Bool
+  sort_by_severity : Bool
+} derive(Eq, @debug.Debug)
+
+pub(all) enum ReportFormat {
+  Markdown
+  PlainText
+  Checklist
+  Json
+  Sarif
+} derive(Eq, @debug.Debug)
+
+pub(all) enum RequirementMode {
+  Exact
+  Contains
+  ContainsAny
+  Prefix
+  AnyOf
+  Absent
+} derive(Eq, @debug.Debug)
+pub fn RequirementMode::label(Self) -> String
+
+pub(all) struct SecurityProfile {
+  kind : ProfileKind
+  key : String
+  title : String
+  audience : String
+  summary : String
+  requirements : Array[HeaderRequirement]
+} derive(Eq, @debug.Debug)
+pub fn SecurityProfile::find_requirement(Self, StringView) -> HeaderRequirement?
+pub fn SecurityProfile::optional_count(Self) -> Int
+pub fn SecurityProfile::optional_headers(Self) -> Array[String]
+pub fn SecurityProfile::required_count(Self) -> Int
+pub fn SecurityProfile::required_headers(Self) -> Array[String]
+pub fn SecurityProfile::score_headers(Self, HeaderSet) -> ProfileAssessment
+pub fn SecurityProfile::to_markdown(Self) -> String
+
 pub(all) enum Severity {
   Critical
   High
@@ -109,6 +563,19 @@ pub(all) enum Severity {
 } derive(Eq, @debug.Debug)
 pub fn Severity::label(Self) -> String
 pub fn Severity::weight(Self) -> Int
+
+pub(all) enum ValidationLevel {
+  ValidationError
+  ValidationWarning
+  ValidationNote
+} derive(Eq, @debug.Debug)
+pub fn ValidationLevel::label(Self) -> String
+
+pub(all) struct ValidationMessage {
+  level : ValidationLevel
+  field : String
+  message : String
+} derive(Eq, @debug.Debug)
 
 // Type aliases
 

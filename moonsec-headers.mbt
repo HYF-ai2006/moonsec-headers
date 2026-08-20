@@ -742,6 +742,26 @@ pub fn AuditReport::count_by_severity(
 }
 
 ///|
+/// Returns true when the report reaches the caller's score threshold.
+///
+/// The threshold is supplied by the caller because a release gate may be
+/// stricter than a local development check.
+pub fn AuditReport::passes(self : AuditReport, minimum_score : Int) -> Bool {
+  self.score >= minimum_score
+}
+
+///|
+/// Returns true when the report contains no Critical or High finding.
+pub fn AuditReport::has_blocking_findings(self : AuditReport) -> Bool {
+  self.findings.any(f => f.severity == Critical || f.severity == High)
+}
+
+///|
+pub fn AuditReport::is_clean(self : AuditReport) -> Bool {
+  self.findings.is_empty()
+}
+
+///|
 pub fn AuditReport::has_finding(self : AuditReport, id : StringView) -> Bool {
   let expected = id.to_owned()
   self.findings.any(f => f.id == expected)

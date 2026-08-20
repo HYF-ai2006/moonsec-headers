@@ -4,3 +4,11 @@ target/
 target
 .mooncakes/
 .moonagent/
+.moon/
+.idea/
+.vscode/
+*.log
+.env
+.env.*
+!.env.example
+coverage/

@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased - 2026-08-19
+
+- Added reusable security profiles for static sites, SPAs, APIs, admin consoles, docs, widgets, dashboards, downloads, Wasm edges, portals, login flows, and media CDNs.
+- Added profile assessment with matched, missing, weak, conflict, optional counters and Markdown/PlainText/Checklist/JSON recommendation output.
+- Added deep CSP analysis with source expression classification, directive fallback summaries, risk observations, Markdown output, and JSON output.
+- Added policy builders for CSP, HSTS, Permissions-Policy, security header plans, plan validation, and runnable plan audits.
+- Added extra report formats: detailed Markdown, PlainText, Checklist, and SARIF-like JSON.
+- Expanded the CLI example to show both insecure-header auditing and generated static-site header plans.
+- Added CI gate helpers for score thresholds, blocking findings, clean reports, and required profile checks.
+- Improved profile matching for case-insensitive CSP/HSTS clauses and alternative permission clauses.
+- Added contributor guidance, security reporting guidance, issue templates, PR checklist, and release reproducibility checklist.
+- Expanded the test suite to 23 tests and raised effective MoonBit source size to 4649 lines.
+
 ## 0.1.0 - 2026-08-02
 
 - Added MoonBit header parser with normalized names, duplicate value storage, and parse issues.
