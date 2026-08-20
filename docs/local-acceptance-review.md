@@ -17,6 +17,7 @@
 - 测试套件共 23 个测试，全部通过。
 - 有效 MoonBit 源码行数为 4649 行。
 - 根目录 `.gitignore` 已忽略 `_build/`、`target/`、`.mooncakes/`、`.moonagent/`、`.moon/` 和本地环境文件。
+- Mooncakes 包 `HYF-ai2006/moonsec-headers` 的 `0.1.0` 版本已正式发布，服务端返回 `200 OK`。
 
 ## 本地执行记录
 
@@ -54,10 +55,9 @@ passed, only Windows line-ending notices were shown.
 
 ## 需要进一步确认
 
-- Mooncakes 发布尚未执行，后续需要在正确账号环境下执行 `moon publish --dry-run` 和 `moon publish`。
-- 当前 Git 本地 author 是中性身份，不是明确的参赛者姓名或 GitHub 账号；为避免账号混淆，本次没有创建本地 commit。
-- 本地分支 `main` 比已知远端 `origin/main` 多一个提交，且还有未提交改动；后续应在确认 GitHub Desktop 登录 `HYF-ai2006` 后再提交和推送。
-- 仓库中存在已跟踪文件 `SUBMISSION - 副本.md`，属于结构清洁度风险；它包含与申报相关的敏感联系信息副本，公开前建议确认是否删除。
+- Mooncakes `0.1.0` 已发布；后续版本发布前仍需在正确账号环境下执行预检和正式发布。
+- 当前 Git 提交身份为 `HYF-ai2006`，本地 `main` 与远端 `origin/main` 已同步且工作区干净。
+- 重复申报文件已删除，公开仓库根目录保持清洁。
 - 当前环境未发现 `moonbitlang/skills`，这不是项目验收硬性缺陷，但后续做 MoonBit 专项开发时可以补装。
 
 ## 提交建议

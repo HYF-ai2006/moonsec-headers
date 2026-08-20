@@ -16,8 +16,8 @@ moonsec-headers 只处理调用者提供的 HTTP 响应头文本。项目不内�
 
 ## 版本发布记录
 
-- 0.1.0：首个可发布版本，包含解析、审计、报告导出、CLI 示例、测试和 CI。
-- Unreleased：增加 profile、深度 CSP 分析、策略生成器、SARIF-like/Checklist/PlainText 报告、CI gate helpers，测试扩展到 23 个。
+- 0.1.0（2026-08-20）：已发布至 Mooncakes，包含解析、审计、深度 CSP 分析、profile、策略生成器、报告导出、CLI 示例、23 个测试和 CI gate helpers。
+- Initial implementation（2026-08-02）：完成基础解析、审计、报告导出、CLI 示例、测试和 CI。
 
 ## 贡献约定
 

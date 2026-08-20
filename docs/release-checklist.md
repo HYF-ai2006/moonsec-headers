@@ -25,13 +25,13 @@ git diff --check
 - `git log` 能看出功能、测试、文档和 CI 的分阶段提交。
 - 不包含 `_build/`、`.mooncakes/`、凭据、真实站点响应、个人敏感信息副本或来源不明素材。
 
-## Mooncakes 发布前
+## Mooncakes 发布记录
 
-Mooncakes 发布需要在正确的 MoonBit 账号环境中进行。先确认 `moon.mod` 的模块名与发布 owner 一致，再执行：
+Mooncakes 发布需要在正确的 MoonBit 账号环境中进行。项目已使用 `HYF-ai2006` 账号完成发布，`moon.mod` 的模块名与发布 owner 一致：
 
 ```bash
 moon publish --dry-run
 moon publish
 ```
 
-本项目当前暂不执行发布命令。发布后应把版本号、包链接和命令输出补充到更新日志或发布记录中。
+发布结果：`HYF-ai2006/moonsec-headers` 版本 `0.1.0`，服务端返回 `200 OK`。后续版本应继续把版本号、包链接和命令结果补充到更新日志或发布记录中。

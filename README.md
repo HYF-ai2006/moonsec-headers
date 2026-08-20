@@ -26,6 +26,8 @@ Mooncakes 包名：
 HYF-ai2006/moonsec-headers
 ```
 
+当前已发布版本：`0.1.0`。
+
 发布到个人 Mooncakes owner 后，可在项目中添加：
 
 ```bash

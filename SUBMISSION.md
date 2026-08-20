@@ -31,7 +31,7 @@ moonsec-headers 是一个用 MoonBit 实现的 HTTP 安全响应头审计库。�
 
 ## 项目现有基础与本次计划
 
-当前已完成 MoonBit 工程、核心库、23 个本地测试、`cmd/main` CLI smoke 示例、README、GitHub Actions CI、MIT 许可证、调研记录、设计说明、测试记录、更新日志、维护计划和贡献/安全报告入口。当前有效 MoonBit 源码为 4649 行，已超过 4k 行。本轮先完成源码、文档、测试、构建和公开仓库准备；Mooncakes 发布环节后续在登录后执行 `moon publish --dry-run` 与正式发布。
+当前已完成 MoonBit 工程、核心库、23 个本地测试、`cmd/main` CLI smoke 示例、README、GitHub Actions CI、MIT 许可证、调研记录、设计说明、测试记录、更新日志、维护计划和贡献/安全报告入口。当前有效 MoonBit 源码为 4649 行，已超过 4k 行。项目 `HYF-ai2006/moonsec-headers` 版本 `0.1.0` 已成功发布至 Mooncakes，发布前预检和服务端校验均通过。
 
 ## 原创或参考说明
 

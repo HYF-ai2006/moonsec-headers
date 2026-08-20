@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased - 2026-08-19
+## 0.1.0 - 2026-08-20
 
 - Added reusable security profiles for static sites, SPAs, APIs, admin consoles, docs, widgets, dashboards, downloads, Wasm edges, portals, login flows, and media CDNs.
 - Added profile assessment with matched, missing, weak, conflict, optional counters and Markdown/PlainText/Checklist/JSON recommendation output.
@@ -13,7 +13,7 @@
 - Added contributor guidance, security reporting guidance, issue templates, PR checklist, and release reproducibility checklist.
 - Expanded the test suite to 23 tests and raised effective MoonBit source size to 4649 lines.
 
-## 0.1.0 - 2026-08-02
+## Initial implementation - 2026-08-02
 
 - Added MoonBit header parser with normalized names, duplicate value storage, and parse issues.
 - Added CSP parser with directive values, duplicate directive detection, and default-src fallback helpers.

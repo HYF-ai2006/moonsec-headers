@@ -68,15 +68,21 @@ git diff --check
 passed, only Windows line-ending notices were shown.
 ```
 
-`moon publish --dry-run` 已尝试执行，当前环境缺少 Mooncakes 登录凭据，返回：
+Mooncakes 发布记录：
 
 ```text
-failed to open credentials file: C:\Users\11619\.moon\credentials.json, please login first
+moon whoami
+Logged in as HYF-ai2006
+
+moon publish --dry-run
+Server status: 202 Accepted
+Dry run completed successfully. No changes were made.
+
+moon publish
+Server status: 200 OK
 ```
 
-参赛者执行 `moon login` 后可再次运行 `moon publish --dry-run` 与 `moon publish`。
-
-2026-08-02 复查时根据当前计划暂不执行 Mooncakes 发布命令；已重新通过 `moon check`、`moon build`、`moon test` 和 `moon run cmd/main`。
+已发布包：`HYF-ai2006/moonsec-headers`，版本 `0.1.0`。`moon publish --dry-run` 在当前 Moon 工具链中会把服务端的 `202 Accepted` 显示为非零退出，但服务端明确返回预检成功；正式 `moon publish` 以退出码 0 完成。
 
 ## 测试数据说明
 
