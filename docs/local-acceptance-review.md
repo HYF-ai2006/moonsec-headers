@@ -1,10 +1,10 @@
 # 本地验收自查记录
 
-日期：2026-08-20
+日期：2026-08-21
 
 ## 总体判断
 
-在不登录 GitHub Desktop、不推送远端、不发布 Mooncakes 的前提下，项目本地工程状态良好。当前代码能够通过 MoonBit 检查、构建、测试、CLI 示例运行和严格无警告检查；有效 MoonBit 源码规模已超过 4k 行。
+当前项目已完成 GitHub 推送和 Mooncakes 发布。仓库代码、文档、CI、测试、示例和发布记录均已同步；当前代码能够通过 MoonBit 检查、构建、测试、CLI 示例运行和严格无警告检查，有效 MoonBit 源码规模已超过 4k 行。
 
 ## 已通过项目
 
@@ -58,19 +58,10 @@ passed, only Windows line-ending notices were shown.
 - Mooncakes `0.1.0` 已发布；后续版本发布前仍需在正确账号环境下执行预检和正式发布。
 - 当前 Git 提交身份为 `HYF-ai2006`，本地 `main` 与远端 `origin/main` 已同步且工作区干净。
 - 重复申报文件已删除，公开仓库根目录保持清洁。
+- `moon check --target all` 通过；`moon test --target all` 中 wasm 与 wasm-gc 通过，JS 目标只因本机未安装 `node.exe` 无法启动测试运行器，这是环境缺项，不是 MoonBit 编译或项目源码错误。
+- 本地工具链为 MoonBit `0.10.5`；官方 CI 使用在线安装的工具链并已通过，验收前仍建议本机升级到 `0.10.7+`。
 - 当前环境未发现 `moonbitlang/skills`，这不是项目验收硬性缺陷，但后续做 MoonBit 专项开发时可以补装。
 
-## 提交建议
+## 验收前结论
 
-建议后续在 GitHub Desktop 切回正确账号后提交：
-
-```text
-feat: add CSP analysis profiles and policy builder
-```
-
-推送前建议确认：
-
-- GitHub Desktop 当前登录账号是 `HYF-ai2006`。
-- Commit author 不会显示成其他 GitHub 账号。
-- 是否删除 `SUBMISSION - 副本.md`。
-- 是否保留 `SUBMISSION.md` 中的公开联系方式。
+本地和公开仓库证据已满足八月黑客松的主要工程验收条件。剩余事项是按官方问卷提交项目链接、申报书和 Mooncakes 包名，并保留后续验收期间的测试和版本记录。

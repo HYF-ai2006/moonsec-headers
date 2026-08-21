@@ -136,6 +136,12 @@ moon publish --dry-run
 - 不解析 HTTP/2 伪头或二进制协议帧。
 - 不替代专业渗透测试、合规认证或浏览器安全模型。
 
+## 独立贡献与同类边界
+
+本项目聚焦“调用方已取得的 HTTP 响应头文本”这一离线输入，不是通用代码质量检查器、依赖许可证扫描器、仓库来源证明工具、在线站点扫描器、HTTP 服务端或浏览器自动化工具。项目的独立贡献是 MoonBit 原生的 header/CSP 结构化解析、source expression 与 fallback 分析、部署场景 profile、策略生成器和多格式安全报告。
+
+项目不移植或复制其他审查工具的实现，也不把“check”或“audit”作为泛化功能承诺。若生态中出现相邻项目，后续会通过 issue、对比测试和 CHANGELOG 明确差异及兼容关系。
+
 ## 测试与验收
 
 当前测试覆盖：
@@ -169,4 +175,4 @@ CI 使用 `moon fmt --check`、`moon check --deny-warn`、`moon build`、`moon t
 
 ## 开源许可证与第三方说明
 
-本项目使用 MIT 许可证。核心功能为原创 MoonBit 实现，不移植第三方源码，不包含图片、音频、字体或来源不明素材。项目仅依赖 MoonBit 官方 core 包。
+本项目使用 MIT 许可证。核心功能为原创 MoonBit 实现，不移植第三方源码，不包含图片、音频、字体或来源不明素材。项目仅依赖 MoonBit 官方 core 包。AI 工具只用于辅助方案讨论、代码草拟、测试补全和文档整理，最终实现由参赛者负责审阅、测试和维护。完整来源说明见 [`docs/provenance.md`](docs/provenance.md)。
