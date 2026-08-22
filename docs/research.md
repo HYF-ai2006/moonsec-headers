@@ -12,7 +12,7 @@
 
 初始备选方向为 robots.txt / sitemap 解析与抓取规则审计。关键词 `robot`、`robots`、`sitemap`、`crawl`、`crawler` 命中 `2111950632/robots-gate`，其描述为“审计 robots.txt 策略、解释访问决策、校验站点地图并规划合规抓取任务”，与备选方向高度重合，因此放弃。
 
-最终方向切换为 HTTP 安全响应头与 CSP 审计。关键词查重结果：
+最终方向切换为 HTTP 安全响应头与 CSP 的离线语义分析。关键词查重结果：
 
 - `csp`：0 个命中。
 - `content-security-policy`：0 个命中。
@@ -35,9 +35,17 @@
 - `moonsec-headers`：0 个仓库。
 - `csp-audit MoonBit`：0 个仓库。
 
+## 2026-08-23 相邻项目复核
+
+历史查重快照不能替代当前生态复核。本次重新查看公开 Mooncakes 文档时发现，`RabitLogic/mbit@0.2.2` 包包含 `secure` Web 中间件，文档列出 CSP、HSTS、X-Frame-Options 和 CSRF 等运行时能力，详见其[公开包文档](https://assets.mooncakes.io/assets/RabitLogic/mbit%400.2.2/mbit.mbt.html)。这说明生态中存在“安全响应头”主题上的相邻能力，不能继续笼统表述为完全没有相关项目。
+
+该相邻项目与本项目的边界如下：`mbit` 负责 Web 服务器、路由和运行时中间件；本项目只处理已经取得的响应头文本，提供离线解析、CSP 语义分析、profile 评估、策略生成和多格式报告。本项目不依赖或复制 `mbit`，也不替代其运行时响应头注入能力；两者可以通过 header 快照组成“生成后再验证”的流程。
+
+因此，项目材料统一使用“HTTP 安全响应头离线语义分析与策略生成”定位，并在[同类边界对照表](differentiation-matrix.md)中主动披露这一具体相邻关系。
+
 ## 结论
 
-`moonsec-headers` 选择 MoonBit 原生安全头解析与审计方向。以上查重结果是选题阶段的历史快照，不构成对后来新增项目的永久排他性声明；项目申报时仍应以当前生态检索和评审意见为准。
+`moonsec-headers` 选择 MoonBit 原生安全头离线解析与语义分析方向。以上查重结果分为历史快照和 2026-08-23 的相邻项目复核，不构成对后来新增项目的永久排他性声明；项目申报时仍应以当前生态检索和评审意见为准。
 
 ## 独立贡献披露
 

@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Added a differentiation matrix documenting adjacent tool categories, project boundaries, independent contributions, and provenance disclosure rules.
+- Added an explicit comparison with the `RabitLogic/mbit@0.2.2` Web security middleware; clarified that this package is an offline validation and policy-analysis layer, not a runtime server middleware.
 
 ## 0.1.0 - 2026-08-20
 

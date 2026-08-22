@@ -2,18 +2,18 @@
 
 [![MoonBit CI](https://github.com/HYF-ai2006/moonsec-headers/actions/workflows/ci.yml/badge.svg)](https://github.com/HYF-ai2006/moonsec-headers/actions/workflows/ci.yml)
 
-moonsec-headers 是一个 MoonBit 原生 HTTP 安全响应头审计库。它把原始响应头文本解析为结构化数据，检查 Content-Security-Policy、HSTS、点击劫持防护、MIME sniffing 防护、Referrer-Policy、Permissions-Policy、跨源隔离和高风险 CORS 组合，并提供深度 CSP source 分析、安全场景 profile、策略生成器以及 Markdown、JSON、Checklist、SARIF-like 等报告输出。
+moonsec-headers 是一个 MoonBit 原生 HTTP 安全响应头离线语义分析与策略生成库。它把调用方已经取得的原始响应头文本解析为结构化数据，检查 Content-Security-Policy、HSTS、点击劫持防护、MIME sniffing 防护、Referrer-Policy、Permissions-Policy、跨源隔离和高风险 CORS 组合，并提供深度 CSP source 分析、安全场景 profile、策略生成器以及 Markdown、JSON、Checklist、SARIF-like 等报告输出。
 
 ## 解决的问题
 
-Web 服务、Wasm 边缘函数、静态站点发布脚本和内部安全工具经常需要判断响应头是否具备基本防护。直接手写字符串判断容易遗漏大小写、重复头、CSP fallback、重复 directive、无效 max-age 等细节。moonsec-headers 提供可复用的解析器、规则审计器和报告模型，适合被其他 MoonBit 工具集成。
+Web 服务、Wasm 边缘函数、静态站点发布脚本和内部安全工具经常需要在发布前验证已经生成的响应头是否具备基本防护。直接手写字符串判断容易遗漏大小写、重复头、CSP fallback、重复 directive、无效 max-age 等细节。moonsec-headers 提供可复用的解析器、语义规则、策略模型和报告模型，适合对 Web 框架、反向代理或发布脚本产生的 header 快照做离线验证。
 
 项目当前有效 MoonBit 源码超过 4k 行，核心功能、扩展 profile、策略生成器和测试均可本地构建运行。
 
 ## 适用场景
 
-- MoonBit Web/Wasm 项目的发布前安全检查。
-- 静态站点、API 网关、边缘函数的离线 header fixture 审计。
+- MoonBit Web/Wasm 项目的发布前安全响应头语义评估。
+- 静态站点、API 网关、边缘函数的离线 header fixture 验证。
 - CI 中对响应头快照进行回归测试。
 - 教学项目中展示 CSP 与常见安全头的最小规则集。
 - 安全工具作者需要一个无网络依赖的 MoonBit 基础库。
@@ -87,7 +87,7 @@ moon run cmd/main
 moon publish --dry-run
 ```
 
-`cmd/main` 使用内置的不安全响应头 fixture，输出一份 Markdown 审计报告，适合作为 CI smoke test。
+`cmd/main` 使用内置的不安全响应头 fixture，输出一份 Markdown 语义分析报告，适合作为 CI smoke test。
 
 ## 核心 API
 
@@ -143,6 +143,12 @@ moon publish --dry-run
 项目不移植或复制其他审查工具的实现，也不把“check”或“audit”作为泛化功能承诺。若生态中出现相邻项目，后续会通过 issue、对比测试和 CHANGELOG 明确差异及兼容关系。
 
 完整的类别对照、输入输出边界和独立贡献证据见 [`docs/differentiation-matrix.md`](docs/differentiation-matrix.md)。
+
+## 与 Web 框架安全中间件的关系
+
+MoonBit Web 框架可以在服务运行时设置安全响应头。例如 `RabitLogic/mbit@0.2.2` 的公开包文档列出了 `secure` middleware，覆盖 CSP、HSTS、X-Frame-Options 和 CSRF 等运行时能力。该类框架负责接收请求、执行路由和生成响应；moonsec-headers 不实现服务器、中间件或 CSRF 流程，也不复制或依赖 `mbit` 的代码。
+
+两者可以组合而不是互相替代：Web 框架或反向代理生成响应头，调用方保存 header 快照，再交给 moonsec-headers 做离线解析、语义评估和报告输出。具体相邻关系和复核边界见 [`docs/differentiation-matrix.md`](docs/differentiation-matrix.md)。
 
 ## 测试与验收
 
