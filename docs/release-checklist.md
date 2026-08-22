@@ -21,6 +21,7 @@ git diff --check
 ## 公开仓库核对
 
 - 默认分支包含 README、LICENSE、CI、测试、示例和当前源代码。
+- README 和申报书链接同类边界对照表，能够说明相邻类别、本项目输入输出和明确不做的事情。
 - GitHub Actions 的 CI 能完成格式检查、无警告检查、构建、测试、空白检查和 CLI smoke test。
 - `git log` 能看出功能、测试、文档和 CI 的分阶段提交。
 - 不包含 `_build/`、`.mooncakes/`、凭据、真实站点响应、个人敏感信息副本或来源不明素材。

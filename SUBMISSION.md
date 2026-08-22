@@ -18,7 +18,7 @@ moonsec-headers 是一个用 MoonBit 实现的 HTTP 安全响应头审计库。�
 
 本项目面向 MoonBit Web/Wasm 应用作者、安全工具开发者、API 网关配置维护者和教学项目。调用者只需要提供响应头文本即可离线审计，不依赖真实网络请求，适合接入 CI、资源发布流程、边缘函数配置检查和安全规则教学。项目边界清晰：只做响应头解析、规则校验和报告导出，不做在线爬取、浏览器模拟或渗透测试。
 
-## 拟实现的核心功能
+## 已实现的核心功能
 
 - HTTP header 行解析、名称归一化、重复 header 聚合与格式错误记录；
 - CSP directive 解析、重复 directive 识别、default-src fallback 与高风险 source 检测；
@@ -44,3 +44,5 @@ moonsec-headers 是一个用 MoonBit 实现的 HTTP 安全响应头审计库。�
 独立贡献包括：面向 MoonBit 的 header 多值解析模型；CSP source expression 分类与 directive fallback 分析；面向静态站、SPA、API、管理后台等场景的 profile；可复用的 CSP/header plan builder；以及 Markdown、JSON、Checklist、PlainText、SARIF-like 报告输出。项目不依赖或复制其他审查工具的实现，也不宣称覆盖通用审计工具的功能。
 
 如果后续发现 MoonBit 生态中出现相邻项目，本项目将以“离线响应头语义审计与策略生成”作为明确范围，优先通过 issue 说明差异、补充对比测试，并在 CHANGELOG 中记录兼容性变化。
+
+本项目已提供一份面向评审复核的[同类边界与独立贡献对照表](docs/differentiation-matrix.md)，逐项说明与通用审查、robots/sitemap、来源证明、约束引擎、Web 中间件和在线扫描器等相邻类别的关系，以及本项目实际覆盖的响应头离线解析、CSP 语义审计、策略生成和报告导出范围。

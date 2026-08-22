@@ -4,13 +4,14 @@
 
 ## 总体判断
 
-当前项目已完成 GitHub 推送和 Mooncakes 发布。仓库代码、文档、CI、测试、示例和发布记录均已同步；当前代码能够通过 MoonBit 检查、构建、测试、CLI 示例运行和严格无警告检查，有效 MoonBit 源码规模已超过 4k 行。
+上一版本项目已完成 GitHub 推送和 Mooncakes 发布。本轮新增的同类边界材料尚待通过正确的 GitHub Desktop 仓库提交并推送；本地工作区中的 MoonBit 代码、CI、测试、示例和发布记录仍保持可复现，严格检查、构建、测试和 CLI 示例均通过，有效 MoonBit 源码规模已超过 4k 行。
 
 ## 已通过项目
 
 - MoonBit 项目配置存在：`moon.mod`、`moon.pkg`、`cmd/main/moon.pkg`。
 - 包名已使用参赛 GitHub 命名空间：`HYF-ai2006/moonsec-headers`。
 - README、LICENSE、CHANGELOG、申报书、设计说明、调研记录、维护计划、测试记录均存在。
+- 已新增同类边界与独立贡献对照表，并由 README、申报书和调研记录互相链接，覆盖近期初审中反复出现的实质重叠披露风险。
 - GitHub Actions CI 配置存在，覆盖 `moon fmt --check`、`moon check --deny-warn`、`moon build`、`moon test --deny-warn`、`git diff --check` 和 `moon run cmd/main`。
 - 已补充 `CONTRIBUTING.md`、`SECURITY.md`、Issue 模板、PR 模板和发布复现清单。
 - CLI 示例可运行，会输出不安全响应头审计报告和静态站点安全 header plan。
@@ -56,12 +57,13 @@ passed, only Windows line-ending notices were shown.
 ## 需要进一步确认
 
 - Mooncakes `0.1.0` 已发布；后续版本发布前仍需在正确账号环境下执行预检和正式发布。
-- 当前 Git 提交身份为 `HYF-ai2006`，本地 `main` 与远端 `origin/main` 已同步且工作区干净。
+- 当前 Git 提交身份为 `HYF-ai2006`；上一版本的 `main` 已推送到 `origin/main`，本轮文档补强产生的本地变更尚未推送。
 - 重复申报文件已删除，公开仓库根目录保持清洁。
+- 对照表只描述功能类别和本项目边界，不点名评价其他参赛项目，也未新增第三方代码或依赖。
 - `moon check --target all` 通过；`moon test --target all` 中 wasm 与 wasm-gc 通过，JS 目标只因本机未安装 `node.exe` 无法启动测试运行器，这是环境缺项，不是 MoonBit 编译或项目源码错误。
-- 本地工具链为 MoonBit `0.10.5`；官方 CI 使用在线安装的工具链并已通过，验收前仍建议本机升级到 `0.10.7+`。
+- 本次复核使用 MoonBit `0.10.9`，高于此前建议的 `0.10.7+`；官方 CI 使用在线安装的工具链并已通过。
 - 当前环境未发现 `moonbitlang/skills`，这不是项目验收硬性缺陷，但后续做 MoonBit 专项开发时可以补装。
 
 ## 验收前结论
 
-本地和公开仓库证据已满足八月黑客松的主要工程验收条件。剩余事项是按官方问卷提交项目链接、申报书和 Mooncakes 包名，并保留后续验收期间的测试和版本记录。
+上一版本的本地和公开仓库证据已满足八月黑客松的主要工程验收条件。本轮剩余事项是只在正确的 `moonsec-headers` GitHub Desktop 仓库提交并推送文档补强，等待 CI 成功后再提交项目链接、申报书和 Mooncakes 包名，并保留后续验收期间的测试和版本记录。

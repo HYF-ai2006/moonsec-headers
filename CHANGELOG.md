@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Added a differentiation matrix documenting adjacent tool categories, project boundaries, independent contributions, and provenance disclosure rules.
+
 ## 0.1.0 - 2026-08-20
 
 - Added reusable security profiles for static sites, SPAs, APIs, admin consoles, docs, widgets, dashboards, downloads, Wasm edges, portals, login flows, and media CDNs.

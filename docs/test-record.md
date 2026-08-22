@@ -95,6 +95,10 @@ Server status: 200 OK
 
 项目不使用来源不明文件、图片、音频、字体或私有测试数据。
 
+## 2026-08-21 文档补强复核
+
+本次仅补充同类边界与独立贡献说明，未修改 MoonBit 源码、公开 API、依赖或已发布版本。补充文档后重新执行 `moon fmt --check`、`moon check --deny-warn`、`moon build`、`moon test --deny-warn`、`moon run cmd/main`、`moon check --target all`、Wasm/Wasm-GC 测试和 `git diff --check`，结果全部通过。
+
 ## 有效代码规模
 
 按排除空行和 `//` 注释行统计，当前 MoonBit 有效源码行数为 4649 行，已超过 4k 参考规模。

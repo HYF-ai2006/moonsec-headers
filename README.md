@@ -142,6 +142,8 @@ moon publish --dry-run
 
 项目不移植或复制其他审查工具的实现，也不把“check”或“audit”作为泛化功能承诺。若生态中出现相邻项目，后续会通过 issue、对比测试和 CHANGELOG 明确差异及兼容关系。
 
+完整的类别对照、输入输出边界和独立贡献证据见 [`docs/differentiation-matrix.md`](docs/differentiation-matrix.md)。
+
 ## 测试与验收
 
 当前测试覆盖：
